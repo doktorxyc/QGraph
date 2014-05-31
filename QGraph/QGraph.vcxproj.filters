@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Dateien">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+    <Filter Include="Header Dateien">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Generierte Dateien">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Resource Dateien">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generierte Dateien\Debug">
+      <UniqueIdentifier>{9f4d34ef-3677-434f-abc1-33031b7cacd0}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generierte Dateien\Release">
+      <UniqueIdentifier>{f4205f60-5977-481f-8434-a0e12e5042f8}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Anderer Dateien">
+      <UniqueIdentifier>{B67473BF-9FA1-4674-831E-CB28F72D4791}</UniqueIdentifier>
+      <Extensions>*</Extensions>
+      <ParseFiles>true</ParseFiles>
+    </Filter>
+    <Filter Include="QGraph">
+      <UniqueIdentifier>{0aeaa039-38a8-4430-9431-76bc032f0e15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="QGraph\Options">
+      <UniqueIdentifier>{c4a2e1d4-fe1d-4999-bc47-7756a9a6db62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Plugin">
+      <UniqueIdentifier>{be6a853f-0e63-421d-9bd8-a71703f3bb75}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QGraph.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QGraph.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QGraphPlugin.cpp">
+      <Filter>Generierte Dateien\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QGraphPlugin.cpp">
+      <Filter>Generierte Dateien\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="QGraph.cpp">
+      <Filter>QGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="QGraphPlugin.cpp">
+      <Filter>Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="QGraphOptions.cpp">
+      <Filter>QGraph\Options</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="QGraph.h">
+      <Filter>QGraph</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QGraphPlugin.h">
+      <Filter>Plugin</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="qgraphplugin.json">
+      <Filter>Anderer Dateien</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="QGraphOptions.h">
+      <Filter>QGraph\Options</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
