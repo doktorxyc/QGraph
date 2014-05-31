@@ -24,6 +24,7 @@ public:
 	Q_PROPERTY(double EdgeWidth READ edgeWidth WRITE setEdgeWidth)
 	Q_PROPERTY(bool DrawGrid READ drawGrid WRITE setDrawGrid)
 	Q_PROPERTY(bool DrawEdge READ drawEdge WRITE setDrawEdge)
+	Q_PROPERTY(int ScrollSpeed READ scrollSpeed WRITE setScrollSpeed)
 	//
 
 	inline int  gridSize() const { return iGridSize; }
@@ -39,6 +40,9 @@ public:
 
 	inline bool drawEdge() const { return bDrawEdge; }
 	void setDrawEdge(const bool &draw);
+
+	inline int  scrollSpeed() const { return iScrollSpeed; }
+	void setScrollSpeed(const int &speed);
 	// Property
 
 
@@ -50,7 +54,7 @@ private:
 	QVector<QRect>  rects;
 	QVector<QPoint> points;
 
-	int xyc;
+	int view;
 
 private:
 	void paintDrawGrid (QPainter &p);

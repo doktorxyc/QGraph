@@ -19,6 +19,8 @@ public:
 	double  dGridWidth;
 	double  dEdgeWidth;
 
+	int iScrollSpeed;
+
 // 	QString sxSuffix;
 // 	QString sySuffix;
 

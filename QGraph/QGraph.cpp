@@ -2,15 +2,15 @@
 
 QT_BEGIN_NAMESPACE
 
-QGraph::QGraph(QWidget *parent)
+	QGraph::QGraph(QWidget *parent)
 	: QWidget(parent), QGraphOptions(this)
 {
-// 	for (int i = 0; i < 1600; i++)
-// 	{
-// 		addPoint (6*i,80);
-// 		addPoint (30*i,50);
-// 	}
-	xyc = 0;
+	for (int i = 0; i < 600; i++)
+	{
+		addPoint (6+i,80);
+		addPoint (80+i,50);
+	}
+	view = 0;
 	setMouseTracking (true);
 }
 
@@ -48,19 +48,26 @@ void QGraph::setEdgeWidth(const double &size)
 	dEdgeWidth = size;
 	repaint ();
 }
-// Property
+
+void QGraph::setScrollSpeed(const int &speed)
+{
+	iScrollSpeed = speed;
+}
+
+// END Property 
 
 
+// Events
 void QGraph::resizeEvent(QResizeEvent *event)
 {
 	rects.clear ();
-	for (int i = 0; i < height ()/iGridSize; i++)
+	for (int i = 0; i < height ()/iGridSize+1; i++)
 	{
-		rects.push_back (QRect(0,iGridSize*i,iGridSize,iGridSize));
+		rects.push_back (QRect(0-view,iGridSize*i,iGridSize,iGridSize));
 
-		for (int i2 = 0; i2 < width ()/iGridSize; i2++)
+		for (int i2 = 0; i2 < width ()/iGridSize+(view/2)+1; i2++)
 		{
-			rects.push_back (QRect(iGridSize*i2,iGridSize*i,iGridSize,iGridSize));
+			rects.push_back (QRect(iGridSize*i2-view,iGridSize*i,iGridSize,iGridSize));
 		}
 	}
 }
@@ -69,22 +76,38 @@ void QGraph::mousePressEvent(QMouseEvent *event)
 {
 	if (event->button () == Qt::MouseButton::LeftButton)
 	{
-		
+		if (event->x () > width()/2)
+		{
+			view+=iScrollSpeed;
+			for (int i = 0; i < points.size (); i++)
+			{
+				points[i].rx () -= iScrollSpeed;
+			}
+		} 
+		else if (view != 0)
+		{
+			for (int i = 0; i < points.size (); i++)
+			{
+				points[i].rx () += iScrollSpeed;
+			}
+			view-=iScrollSpeed;
+		}
+
+		resizeEvent (&QResizeEvent(QSize(),QSize()));
+		repaint ();
 	}
-	xyc++;
 }
 
 void QGraph::mouseMoveEvent(QMouseEvent *event)
 {
-	xyc++;
+	
 }
+
 
 void QGraph::paintEvent(QPaintEvent *event)
 {
 	QTime t;
 	t.start ();
-
-	
 
 	QPainter p(this);
 	p.setRenderHint (QPainter::Antialiasing);
@@ -98,8 +121,9 @@ void QGraph::paintEvent(QPaintEvent *event)
 	paintDrawVecLines (p);
 
 	p.drawText (QRect(10,10,500,50), "Time: " + QString::number(t.elapsed ()));
-	p.drawText (QRect(10,20,500,50), "xyc: " + QString::number(xyc));
+	p.drawText (QRect(10,20,500,50), "xyc: " + QString::number(view));
 }
+// END Events
 
 void QGraph::paintDrawGrid(QPainter &p)
 {
@@ -129,7 +153,7 @@ void QGraph::paintDrawVecLines(QPainter &p)
 	QPen pLine(Qt::red,1);
 
 	p.setPen (pLine);
-	
+
 
 	p.drawLines (points);
 	//p.drawPoints (&points[0],points.size ());
@@ -144,7 +168,7 @@ void QGraph::addPoint(const QPoint &point)
 		QPoint p2(points[points.size ()-1].x (), points[points.size ()-1].y ());
 		points.push_back (p);
 		points.push_back (p2);
- 	}
+	}
 	points.push_back (point);
 	repaint ();
 }

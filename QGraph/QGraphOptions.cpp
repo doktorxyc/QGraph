@@ -7,6 +7,7 @@ QGraphOptions::QGraphOptions(QWidget *w)
 	iGridSize = 20;
 	dGridWidth  = 0.1;
 	dEdgeWidth  = 2.0;
+	iScrollSpeed = 30;
 
 	bDrawGrid = true;
 	bDrawEdge = true;
